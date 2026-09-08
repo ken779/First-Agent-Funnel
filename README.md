@@ -13,20 +13,26 @@ privacy.html   named scopes, and the Limited Use disclosure Google checks for
 terms.html
 styles.css     one file, light and dark
 logo.svg
-CNAME          the custom domain, read by GitHub Pages
 ```
 
 ## Deploying
 
-GitHub Pages, from the repository root:
+Netlify, from the repository root. There is nothing to build, so the publish directory is
+the root and the build command is empty.
 
-1. **Settings → Pages → Source:** Deploy from a branch, `main`, `/ (root)`
-2. **Settings → Pages → Custom domain:** the domain, which writes `CNAME`
-3. At the registrar, point the apex at GitHub Pages:
-   - `A` records to `185.199.108.153`, `.109.153`, `.110.153`, `.111.153`
-   - or `ALIAS`/`ANAME` to `<user>.github.io` if the registrar supports it
-4. Tick **Enforce HTTPS** once the certificate is issued. Google will not accept a policy
-   URL that does not load over HTTPS.
+1. **Netlify → Add new project → Import from Git**, this repository, branch `main`
+2. **Domain management → Add a domain:** `firstagentstudio.com`, and set
+   **`www.firstagentstudio.com` as the primary** — Netlify then redirects the apex to it,
+   which is the configuration that actually gets the CDN
+3. At Cloudflare, which holds this domain's DNS, two records:
+   - `www` CNAME to `firstagentfunnel.netlify.app`
+   - `@` CNAME to `apex-loadbalancer.netlify.com`, flattened by Cloudflare automatically
+4. Both records **DNS only** — the grey cloud, not the orange one. Proxied through
+   Cloudflare, Netlify cannot verify the domain at all, and the half-working state that
+   follows presents as certificate errors rather than as a DNS problem.
+
+HTTPS is issued by Netlify once the domain verifies. Google will not accept a policy URL
+that does not load over HTTPS, so that certificate is on the critical path, not a nicety.
 
 `app.` is expected to point at the application, which is a separate deployment. The sign-in
 links here already assume that.
