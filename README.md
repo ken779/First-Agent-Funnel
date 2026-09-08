@@ -50,5 +50,5 @@ From the application repository:
 git subtree push --prefix site site main
 ```
 
-`site` is the remote pointing at this repository. The first push takes a moment while it
+`site` is the remote pointing at this repository (`ken779/First-Agent-Funnel`). The first push takes a moment while it
 rewrites the history of that directory; later ones are quick.
