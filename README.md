@@ -37,3 +37,18 @@ The privacy policy describes what the application actually does, scope by scope.
 scopes change, or Google user data starts being sent somewhere it is not sent today, this
 file changes in the same commit — a policy that has drifted from the code is worse than no
 policy, because it has been read and relied on.
+
+## How this gets here
+
+It lives in the application repository under `site/` and is published to this one as a git
+subtree. One source of truth: the privacy policy describes what the app does, so the two
+should never be able to disagree.
+
+From the application repository:
+
+```
+git subtree push --prefix site site main
+```
+
+`site` is the remote pointing at this repository. The first push takes a moment while it
+rewrites the history of that directory; later ones are quick.
