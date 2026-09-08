@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="First Agent Studio">
+  <!--
+    For the Google consent screen, where a realtor decides whether to let this app post to
+    their channel. Shown at 120px beside the app name, so it carries one idea: a roofline
+    over a play button. Property and video, in two shapes that survive being small.
+
+    No text. A wordmark at this size is a grey smudge, and the app name sits beside it.
+  -->
+  <rect width="120" height="120" rx="27" fill="#1d4ed8"/>
+  <!-- The roof, wide and high enough to read as shelter rather than as a chevron. -->
+  <path d="M27 50 L60 26 L93 50" fill="none" stroke="#ffffff" stroke-width="10"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- The play mark. Optically centred rather than measured: a triangle's visual centre
+       sits left of its bounding box, so it is nudged right to stop it drifting. Rounded
+       with a stroke of its own fill, because a sharp apex goes ragged at small sizes. -->
+  <path d="M50 63 L84 82 L50 101 Z" fill="#ffffff" stroke="#ffffff" stroke-width="8"
+        stroke-linejoin="round"/>
+</svg>
